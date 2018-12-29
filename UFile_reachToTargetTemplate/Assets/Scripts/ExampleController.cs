@@ -16,6 +16,7 @@ public class ExampleController : MonoBehaviour {
     public GameObject trackerHolderObject;
     public GameObject rotatorObject;
     public GameObject targetHolder;
+    public TargetHolderController targetHolderController;
 
     public string trialType = null;
     //public Vector3 targetPosition = new Vector3();
@@ -89,7 +90,7 @@ public class ExampleController : MonoBehaviour {
 
         if(Math.Abs(maxTarget - minTarget) % numTargets != 0)
         {
-            print("WARNING: Check your trial settings");
+            print("WARNING: Check your trial settings for target positions and numbers");
         }
 
         int targetStep = Math.Abs(maxTarget - minTarget) / (numTargets - 1);
@@ -123,12 +124,12 @@ public class ExampleController : MonoBehaviour {
 
         int targetLocation = shuffledTargetList[0];
 
-        print(targetLocation);
+        //print(targetLocation);
         //remove the used target from the list
         shuffledTargetList.RemoveAt(0);
 
         //determine Target Position (used by ColliderDetector to instantiate the target)
-        //rotate the target holder
+        //rotate the target holder (this just needs to be done for some reason..)
         targetHolder.transform.rotation = Quaternion.Euler(0, targetLocation - 90, 0);
 
         //check for clamped
@@ -138,13 +139,13 @@ public class ExampleController : MonoBehaviour {
             
             clampedHandCursorObject.SetActive(true);
             clampedHandCursorObject.GetComponent<MeshRenderer>().enabled = false;
-            print("setting clamped to active");
+            //print("setting clamped to active");
         }
         else
         {
             handCursorObject.SetActive(true);
             clampedHandCursorObject.SetActive(false);
-            print("setting clamped to inactive");
+            //print("setting clamped to inactive");
         }
         //set the rotation for this trial
         float rotationAngle = Convert.ToSingle(trial.settings["rotation"]);
@@ -186,14 +187,10 @@ public class ExampleController : MonoBehaviour {
         Debug.Log("ending reach trial...");
 
         //Destroy old target
-        GameObject[] targets = GameObject.FindGameObjectsWithTag("Target");
-
-        for (var i = 0; i < targets.Length; i++)
-        {
-            Destroy(targets[i]);
-        }
+        targetHolderController.DestroyTarget();
 
         session.currentTrial.End();
+
         if (session.currentTrial == session.lastTrial)
         {
             session.End();
@@ -203,4 +200,11 @@ public class ExampleController : MonoBehaviour {
             session.BeginNextTrial();
         }
     }
+
+    ////Unused for now but useful
+    //IEnumerator WaitAFrame()
+    //{
+    //    //returning 0 will make it wait 1 frame
+    //    yield return 0;
+    //}
 }
