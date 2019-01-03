@@ -3,7 +3,14 @@ guid: fb1699efacde4f44790a9e2edce2ce48
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - exampleController: {instanceID: 0}
+  - targetHolderController: {instanceID: 0}
+  - target: {instanceID: 0}
+  - trackerHolderObject: {instanceID: 0}
+  - homePosition: {instanceID: 0}
+  - targetEffect: {fileID: 1430967529967938, guid: 336bf1f6e8b291143b3cdfe85f0c81b9,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

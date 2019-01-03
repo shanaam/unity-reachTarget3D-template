@@ -2,7 +2,7 @@
     "num_trials_aligned_reach_1": 3,
     "num_trials_rotated_reach_1": 3,
     "num_trials_rotated_reach_2": 3,
-    "num_trials_noCursor_reach_1": 0,
+    "num_trials_noCursor_reach_1": 3,
     "num_trials_clamped_reach_1": 3,
     "rotation_1": 30,
     "rotation_2": -30,

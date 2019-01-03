@@ -5,7 +5,6 @@ using UnityEngine;
 public class TargetHolderController : MonoBehaviour {
 
     public GameObject targetPrefab;
-    public GameObject targetEffect;
 
 	// Use this for initialization
 	void Start () {
@@ -25,12 +24,6 @@ public class TargetHolderController : MonoBehaviour {
 
         for (var i = 0; i < targets.Length; i++)
         {
-            //play the explosion effect
-            //PROBLEM: the transform.position seems the be the NEXT trial's position. 
-            //POTENTIAL SOLUTION: Make a trial start at.. hitting home position.
-            var effect = Instantiate(targetEffect, transform);
-            targetEffect.transform.localPosition = targets[0].transform.localPosition;
-
             Destroy(targets[i]);
         }
     }

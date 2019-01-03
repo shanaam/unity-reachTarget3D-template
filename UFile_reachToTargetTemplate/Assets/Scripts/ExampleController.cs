@@ -69,12 +69,12 @@ public class ExampleController : MonoBehaviour {
         rotatedReachBlock2.settings["visible_cursor"] = true;
         rotatedReachBlock2.settings["rotation"] = rotationSize2;
 
-        ////make the no_cursor blocks (open JSON file to check the correct names)
-        //int numNoCursorTrials1 = Convert.ToInt32(session.settings["num_trials_noCursor_reach_1"]);
-        //Block noCursorBlock1 = session.CreateBlock(numNoCursorTrials1);
-        //noCursorBlock1.settings["trial_type"] = "no_cursor";
-        //noCursorBlock1.settings["visible_cursor"] = false;
-        //noCursorBlock1.settings["rotation"] = 0;
+        //make the no_cursor blocks (open JSON file to check the correct names)
+        int numNoCursorTrials1 = Convert.ToInt32(session.settings["num_trials_noCursor_reach_1"]);
+        Block noCursorBlock1 = session.CreateBlock(numNoCursorTrials1);
+        noCursorBlock1.settings["trial_type"] = "no_cursor";
+        noCursorBlock1.settings["visible_cursor"] = false;
+        noCursorBlock1.settings["rotation"] = 0;
 
         //make the clamped blocks (open JSON file to check the correct names)
         int numClampedTrials1 = Convert.ToInt32(session.settings["num_trials_clamped_reach_1"]);
@@ -109,7 +109,7 @@ public class ExampleController : MonoBehaviour {
     //call this next one on the "On Trial Begin" event
     public void StartReachTrial(Trial trial)
     {
-        Debug.Log("starting reach trial!");
+        //Debug.Log("starting reach trial!");
 
         //determine the position of the target for this trial
 
@@ -155,7 +155,7 @@ public class ExampleController : MonoBehaviour {
         homePositionObject.SetActive(true);
 
         // explicitly convert settings["visible_cursor"] to a boolean for if statement
-        //string cursorStatus;
+        // this is just to save in the trial by trial csv
         bool visibleCursor = Convert.ToBoolean(trial.settings["visible_cursor"]);
 
         trialType = Convert.ToString(trial.settings["trial_type"]);
@@ -173,10 +173,10 @@ public class ExampleController : MonoBehaviour {
         //bool visibleCursor = Convert.ToBoolean(session.currentTrial.settings["visible_cursor"]);
 
         //make the Hand Cursor invisible if
-        if (trialType.Contains("no_cursor"))
-        {
-            GameObject.Find("Hand Cursor").GetComponent<MeshRenderer>().enabled = false;
-        }
+        //if (trialType.Contains("no_cursor"))
+        //{
+        //    GameObject.Find("Hand Cursor").GetComponent<MeshRenderer>().enabled = false;
+        //}
 
         //move to next trial IF handIsPause AND hand is touching target.. (in ColliderDetector)
     }
@@ -184,7 +184,7 @@ public class ExampleController : MonoBehaviour {
     // end session or begin next trial (used for an example, find this in Hand Cursor's OnTriggerEnter method
     public void EndAndPrepare()
     {
-        Debug.Log("ending reach trial...");
+        //Debug.Log("ending reach trial...");
 
         //Destroy old target
         targetHolderController.DestroyTarget();

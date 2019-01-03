@@ -640,8 +640,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPrefab: {fileID: 1153151479510208, guid: 4e18c729a3cdb344e924b2d1fb6a05c9,
     type: 2}
-  targetEffect: {fileID: 1430967529967938, guid: 336bf1f6e8b291143b3cdfe85f0c81b9,
-    type: 2}
 --- !u!4 &339582018
 Transform:
   m_ObjectHideFlags: 0
@@ -2982,6 +2980,8 @@ MonoBehaviour:
   target: {fileID: 1153151479510208, guid: 4e18c729a3cdb344e924b2d1fb6a05c9, type: 2}
   trackerHolderObject: {fileID: 1931928506}
   homePosition: {fileID: 1197467116}
+  targetEffect: {fileID: 1430967529967938, guid: 336bf1f6e8b291143b3cdfe85f0c81b9,
+    type: 2}
   isPaused: 0
 --- !u!1 &1781008209
 GameObject:
@@ -3159,6 +3159,8 @@ MonoBehaviour:
   target: {fileID: 1153151479510208, guid: 4e18c729a3cdb344e924b2d1fb6a05c9, type: 2}
   trackerHolderObject: {fileID: 1931928506}
   homePosition: {fileID: 1197467116}
+  targetEffect: {fileID: 1430967529967938, guid: 336bf1f6e8b291143b3cdfe85f0c81b9,
+    type: 2}
   isPaused: 0
 --- !u!1001 &1843270157
 Prefab:

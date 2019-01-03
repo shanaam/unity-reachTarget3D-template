@@ -22,6 +22,7 @@ public class ColliderDetector : MonoBehaviour {
     public bool isPaused = false;
     bool isInTarget = false;
     bool isInHome = false;
+    bool isInHomeArea = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -38,6 +39,8 @@ public class ColliderDetector : MonoBehaviour {
 
         else if (other.CompareTag("HomeArea"))
         {
+            isInHomeArea = true;
+
             lastPosition = transform.position;
 
             //clear the list
@@ -45,6 +48,7 @@ public class ColliderDetector : MonoBehaviour {
 
 
             InvokeRepeating("CheckForPause", 0, 0.1f);
+            Debug.Log("Check For Pause!");
         }
     }
 
@@ -52,6 +56,8 @@ public class ColliderDetector : MonoBehaviour {
     {
         if (other.CompareTag("HomeArea"))
         {
+            isInHomeArea = false;
+
             lastPosition = transform.position;
 
             //clear the list
@@ -138,7 +144,7 @@ public class ColliderDetector : MonoBehaviour {
         {
             //NOT CHECKING FOR PAUSE IN HOME FOR NO-CURSORS! FIX THIS
             //if cursor is paused
-            if (isPaused)
+            if (isPaused && !isInHomeArea)
             {
                 //disable the tracker script (for the return to home position)
                 trackerHolderObject.GetComponent<PositionRotationTracker>().enabled = false;
@@ -155,7 +161,7 @@ public class ColliderDetector : MonoBehaviour {
                 exampleController.EndAndPrepare();
             }
 
-            if (isInHome)
+            if (isInHome && isPaused)
             {
                 //Turn off home
                 homePosition.SetActive(false);
@@ -165,8 +171,8 @@ public class ColliderDetector : MonoBehaviour {
 
                 CancelInvoke("CheckForPause");
 
-                //make the cursor reappear
-                GetComponent<MeshRenderer>().enabled = true;
+                //make the cursor stay invisible
+                GetComponent<MeshRenderer>().enabled = false;
 
                 //Create target
                 //randomize location of target
