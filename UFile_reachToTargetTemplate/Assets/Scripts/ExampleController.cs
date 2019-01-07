@@ -17,7 +17,9 @@ public class ExampleController : MonoBehaviour {
     public GameObject rotatorObject;
     public GameObject targetHolder;
     public TargetHolderController targetHolderController;
+    public InstructionController instructionController;
 
+    public bool isDoneInstruction = false;
     public string trialType = null;
     //public Vector3 targetPosition = new Vector3();
 
@@ -54,6 +56,7 @@ public class ExampleController : MonoBehaviour {
         alignedReachBlock1.settings["trial_type"] = "aligned";
         alignedReachBlock1.settings["visible_cursor"] = true;
         alignedReachBlock1.settings["rotation"] = 0;
+        alignedReachBlock1.settings["show_instruction"] = true;
 
         //make the first rotated block
         int numRotatedTrials1 = Convert.ToInt32(session.settings["num_trials_rotated_reach_1"]);
@@ -61,6 +64,7 @@ public class ExampleController : MonoBehaviour {
         rotatedReachBlock1.settings["trial_type"] = "rotated_1";
         rotatedReachBlock1.settings["visible_cursor"] = true;
         rotatedReachBlock1.settings["rotation"] = rotationSize1;
+        rotatedReachBlock1.settings["show_instruction"] = false;
 
         //make the second rotated block
         int numRotatedTrials2 = Convert.ToInt32(session.settings["num_trials_rotated_reach_2"]);
@@ -68,6 +72,7 @@ public class ExampleController : MonoBehaviour {
         rotatedReachBlock2.settings["trial_type"] = "rotated_2";
         rotatedReachBlock2.settings["visible_cursor"] = true;
         rotatedReachBlock2.settings["rotation"] = rotationSize2;
+        rotatedReachBlock2.settings["show_instruction"] = true;
 
         //make the no_cursor blocks (open JSON file to check the correct names)
         int numNoCursorTrials1 = Convert.ToInt32(session.settings["num_trials_noCursor_reach_1"]);
@@ -75,6 +80,7 @@ public class ExampleController : MonoBehaviour {
         noCursorBlock1.settings["trial_type"] = "no_cursor";
         noCursorBlock1.settings["visible_cursor"] = false;
         noCursorBlock1.settings["rotation"] = 0;
+        noCursorBlock1.settings["show_instruction"] = true;
 
         //make the clamped blocks (open JSON file to check the correct names)
         int numClampedTrials1 = Convert.ToInt32(session.settings["num_trials_clamped_reach_1"]);
@@ -82,6 +88,8 @@ public class ExampleController : MonoBehaviour {
         clampedBlock1.settings["trial_type"] = "clamped";
         clampedBlock1.settings["visible_cursor"] = false;
         clampedBlock1.settings["rotation"] = 0;
+        clampedBlock1.settings["show_instruction"] = true;
+
 
         //quit the game if any of the trial numbers are not divisible by the number of trials
         int minTarget = Convert.ToInt32(session.settings["min_target"]);
@@ -111,12 +119,26 @@ public class ExampleController : MonoBehaviour {
     {
         //Debug.Log("starting reach trial!");
 
-        //determine the position of the target for this trial
+        // Show instructions when required
+        // If the trial is the first trial in the block
+        if (trial.numberInBlock == 1)
+        {
+            Debug.Log("is trial 1 in block");
+            // If showInstruction is true
+            if (Convert.ToBoolean(trial.settings["show_instruction"]) == true)
+            {
+                isDoneInstruction = false;
+                Debug.Log("show instruction = true,  expanding");
 
-        //targetPosition = new Vector3(UnityEngine.Random.Range(-0.25f, 0.25f), 0.7f, UnityEngine.Random.Range(0.35f, 0.45f));
+                // transition to the big instruction, change the text
+                instructionController.ExpandInstruction();
+                instructionController.IsStill();
+            }
+
+        }
 
         //Pseudorandom target location
-        if(shuffledTargetList.Count < 1)
+        if (shuffledTargetList.Count < 1)
         {
             shuffledTargetList = new List<int>(targetList);
             shuffledTargetList.Shuffle();
@@ -160,12 +182,13 @@ public class ExampleController : MonoBehaviour {
 
         trialType = Convert.ToString(trial.settings["trial_type"]);
 
-        Debug.LogFormat("the cursor is {0}", trialType);
+        //Debug.LogFormat("the cursor is {0}", trialType);
 
         //add these things to the trial_results csv (per trial)
         trial.result["trial_type"] = trial.settings["trial_type"];
         trial.result["cursor_visibility"] = trial.settings["visible_cursor"];
         trial.result["rotation"] = trial.settings["rotation"];
+        trial.result["target_angle"] = targetLocation;
     }
 
     private void Update()

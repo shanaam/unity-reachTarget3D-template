@@ -1,35 +1,14 @@
 timestamp,log_type,message
 0.02,Warning,"A Canvas named ""[UXF_UI]"" with a render mode of ScreenSpaceOverlay is being used while VR is also enabled. This Canvas will continue to incur a rendering cost but will not be visible while in VR. Is this intentional?"
-2.84095,Log,Loaded: D:\shanaa\repos\unity-reachTarget3D-template\UFile_reachToTargetTemplate\data\participant_list_uxf.csv
-5.579893,Log,Updating: D:\shanaa\repos\unity-reachTarget3D-template\UFile_reachToTargetTemplate\data\participant_list_uxf.csv
-6.413654,Warning,Warning: Session already exists! Continuing will overwrite
-6.413654,Log,the cursor is aligned
-17.94,Log,Check For Pause!
-20.64531,Log,the cursor is aligned
-20.98,Log,Check For Pause!
-23.40096,Log,the cursor is aligned
-23.76,Log,Check For Pause!
-26.24507,Log,the cursor is rotated_1
-26.66,Log,Check For Pause!
-29.32251,Log,the cursor is rotated_1
-29.68,Log,Check For Pause!
-32.26764,Log,the cursor is rotated_1
-32.64,Log,Check For Pause!
-35.22304,Log,the cursor is rotated_2
-35.58,Log,Check For Pause!
-38.26759,Log,the cursor is rotated_2
-38.66,Log,Check For Pause!
-41.22314,Log,the cursor is rotated_2
-41.66,Log,Check For Pause!
-44.30106,Log,the cursor is no_cursor
-44.6,Log,Check For Pause!
-47.18996,Log,the cursor is no_cursor
-47.68,Log,Check For Pause!
-50.30115,Log,the cursor is no_cursor
-50.76,Log,Check For Pause!
-53.34571,Log,the cursor is clamped
-53.9,Log,Check For Pause!
-56.44558,Log,the cursor is clamped
-56.88,Log,Check For Pause!
-59.70063,Log,the cursor is clamped
-60.16,Log,Check For Pause!
+6.14352,Log,Loaded: D:\shanaa\repos\unity-reachTarget3D-template\UFile_reachToTargetTemplate\data\participant_list_uxf.csv
+8.898698,Log,Updating: D:\shanaa\repos\unity-reachTarget3D-template\UFile_reachToTargetTemplate\data\participant_list_uxf.csv
+9.795172,Warning,Warning: Session already exists! Continuing will overwrite
+9.795172,Log,is trial 1 in block
+9.795172,Log,show instruction = true  expanding
+35.98635,Log,is trial 1 in block
+45.08648,Log,is trial 1 in block
+45.08648,Log,show instruction = true  expanding
+65.08656,Log,is trial 1 in block
+65.08656,Log,show instruction = true  expanding
+84.72002,Log,is trial 1 in block
+84.72002,Log,show instruction = true  expanding

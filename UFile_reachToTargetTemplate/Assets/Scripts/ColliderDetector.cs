@@ -10,6 +10,7 @@ public class ColliderDetector : MonoBehaviour {
 
     public ExampleController exampleController;
     public TargetHolderController targetHolderController;
+    public InstructionController instructionController;
     public GameObject target;
     public GameObject trackerHolderObject;
     public GameObject homePosition;
@@ -23,6 +24,7 @@ public class ColliderDetector : MonoBehaviour {
     bool isInTarget = false;
     bool isInHome = false;
     bool isInHomeArea = false;
+    bool isInAcceptor = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -48,7 +50,13 @@ public class ColliderDetector : MonoBehaviour {
 
 
             InvokeRepeating("CheckForPause", 0, 0.1f);
-            Debug.Log("Check For Pause!");
+            //Debug.Log("Check For Pause!");
+        }
+
+        else if (other.CompareTag("InstructionAcceptor"))
+        {
+            //Debug.Log("is in Acceptor!");
+            isInAcceptor = true;
         }
     }
 
@@ -80,6 +88,11 @@ public class ColliderDetector : MonoBehaviour {
         {
             isInHome = false;
         }
+
+        else if (other.CompareTag("InstructionAcceptor"))
+        {
+            isInAcceptor = false;
+        }
     }
 
     //IEnumerator StartRecordingDistance()
@@ -87,7 +100,18 @@ public class ColliderDetector : MonoBehaviour {
     //    InvokeRepeating("RecordDistance", 0, 1);
     //    yield return null;
     //}
+    void Update()
+    {
+        if (isPaused && isInAcceptor)
+        {
+            //TESTING ANIMATION
+            instructionController.ShrinkInstructions();
+            instructionController.IsStill();
 
+            exampleController.isDoneInstruction = true;
+         
+        }
+    }
     
 
     private void LateUpdate()
@@ -113,7 +137,7 @@ public class ColliderDetector : MonoBehaviour {
                 exampleController.EndAndPrepare();
             }
 
-            if (isPaused && isInHome)
+            if (isPaused && isInHome && exampleController.isDoneInstruction)
             {
                 //Turn off home
                 homePosition.SetActive(false);
@@ -161,7 +185,7 @@ public class ColliderDetector : MonoBehaviour {
                 exampleController.EndAndPrepare();
             }
 
-            if (isInHome && isPaused)
+            if (isInHome && isPaused && exampleController.isDoneInstruction)
             {
                 //Turn off home
                 homePosition.SetActive(false);

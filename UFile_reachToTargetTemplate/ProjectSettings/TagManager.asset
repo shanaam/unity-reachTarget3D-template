@@ -8,6 +8,7 @@ TagManager:
   - Target
   - Home
   - HomeArea
+  - InstructionAcceptor
   layers:
   - Default
   - TransparentFX
