@@ -1,14 +1,22 @@
 timestamp,log_type,message
 0.02,Warning,"A Canvas named ""[UXF_UI]"" with a render mode of ScreenSpaceOverlay is being used while VR is also enabled. This Canvas will continue to incur a rendering cost but will not be visible while in VR. Is this intentional?"
-6.14352,Log,Loaded: D:\shanaa\repos\unity-reachTarget3D-template\UFile_reachToTargetTemplate\data\participant_list_uxf.csv
-8.898698,Log,Updating: D:\shanaa\repos\unity-reachTarget3D-template\UFile_reachToTargetTemplate\data\participant_list_uxf.csv
-9.795172,Warning,Warning: Session already exists! Continuing will overwrite
-9.795172,Log,is trial 1 in block
-9.795172,Log,show instruction = true  expanding
-35.98635,Log,is trial 1 in block
-45.08648,Log,is trial 1 in block
-45.08648,Log,show instruction = true  expanding
-65.08656,Log,is trial 1 in block
-65.08656,Log,show instruction = true  expanding
-84.72002,Log,is trial 1 in block
-84.72002,Log,show instruction = true  expanding
+1.931583,Log,Loaded: D:\shanaa\repos\unity-reachTarget3D-template\UFile_reachToTargetTemplate\data\participant_list_uxf.csv
+5.024203,Log,Updating: D:\shanaa\repos\unity-reachTarget3D-template\UFile_reachToTargetTemplate\data\participant_list_uxf.csv
+5.839505,Warning,Warning: Session already exists! Continuing will overwrite
+5.839505,Log,show instruction = true  expanding
+5.839505,Log,triggeringStill
+19.52245,Log,triggeringShrink
+19.52245,Log,triggeringStill
+29.74494,Log,show instruction = false  doing nothing
+39.16741,Log,show instruction = true  expanding
+39.16741,Log,triggeringStill
+42.64454,Log,triggeringShrink
+42.64454,Log,triggeringStill
+52.72254,Log,show instruction = true  expanding
+52.72254,Log,triggeringStill
+60.34497,Log,triggeringShrink
+60.34497,Log,triggeringStill
+67.46767,Log,show instruction = true  expanding
+67.46767,Log,triggeringStill
+69.90039,Log,triggeringShrink
+69.90039,Log,triggeringStill

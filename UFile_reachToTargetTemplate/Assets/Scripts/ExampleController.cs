@@ -123,7 +123,6 @@ public class ExampleController : MonoBehaviour {
         // If the trial is the first trial in the block
         if (trial.numberInBlock == 1)
         {
-            Debug.Log("is trial 1 in block");
             // If showInstruction is true
             if (Convert.ToBoolean(trial.settings["show_instruction"]) == true)
             {
@@ -133,6 +132,12 @@ public class ExampleController : MonoBehaviour {
                 // transition to the big instruction, change the text
                 instructionController.ExpandInstruction();
                 instructionController.IsStill();
+            }
+
+            else if (Convert.ToBoolean(trial.settings["show_instruction"]) == false)
+            {
+                Debug.Log("show instruction = false,  doing nothing");
+                isDoneInstruction = true;
             }
 
         }

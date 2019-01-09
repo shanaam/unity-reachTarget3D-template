@@ -13,11 +13,13 @@ public class InstructionController : MonoBehaviour {
 	
 	public void ShrinkInstructions ()
     {
+        Debug.Log("triggeringShrink");
         animator.SetTrigger("Shrink");
     }
 
     public void IsStill()
     {
+        Debug.Log("triggeringStill");
         animator.SetTrigger("StayStill");
     }
 

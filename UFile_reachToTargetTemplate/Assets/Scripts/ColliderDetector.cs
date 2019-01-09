@@ -57,6 +57,8 @@ public class ColliderDetector : MonoBehaviour {
         {
             //Debug.Log("is in Acceptor!");
             isInAcceptor = true;
+
+            InvokeRepeating("CheckForPause", 0, 0.1f);
         }
     }
 
@@ -94,13 +96,8 @@ public class ColliderDetector : MonoBehaviour {
             isInAcceptor = false;
         }
     }
-
-    //IEnumerator StartRecordingDistance()
-    //{
-    //    InvokeRepeating("RecordDistance", 0, 1);
-    //    yield return null;
-    //}
-    void Update()
+    
+    private void LateUpdate()
     {
         if (isPaused && isInAcceptor)
         {
@@ -109,105 +106,109 @@ public class ColliderDetector : MonoBehaviour {
             instructionController.IsStill();
 
             exampleController.isDoneInstruction = true;
-         
-        }
-    }
-    
 
-    private void LateUpdate()
-    {
-        //if cursor is visible..
-        if (exampleController.trialType.Contains("rotated") || exampleController.trialType.Contains("clamped") || exampleController.trialType.Contains("aligned"))
-        { 
-            //if cursor is paused AND in target
-            if (isPaused && isInTarget)
-            {
-                //disable the tracker script (for the return to home position)
-                trackerHolderObject.GetComponent<PositionRotationTracker>().enabled = false;
+            isPaused = false;
 
-                isPaused = false;
-                isInTarget = false;
+            CancelInvoke("CheckForPause");
 
-                CancelInvoke("CheckForPause");
-
-                //make the cursor disappear
-                GetComponent<MeshRenderer>().enabled = false;
-
-                //start the next trial
-                exampleController.EndAndPrepare();
-            }
-
-            if (isPaused && isInHome && exampleController.isDoneInstruction)
-            {
-                //Turn off home
-                homePosition.SetActive(false);
-
-                isInHome = false;
-                isPaused = false;
-
-                CancelInvoke("CheckForPause");
-
-                //make the cursor reappear
-                GetComponent<MeshRenderer>().enabled = true;
-
-                //Create target
-                //randomize location of target
-                //Vector3 newTargetPosition = new Vector3(UnityEngine.Random.Range(-0.25f, 0.25f), 0.7f, UnityEngine.Random.Range(0.35f, 0.45f));
-                //Quaternion targetRotation = new Quaternion(0, 0, 0, 0);
-                //Instantiate(target, exampleController.targetPosition, targetRotation);
-
-                targetHolderController.InstantiateTarget();
-
-                //enable the tracker script (for the reach to target)
-                trackerHolderObject.GetComponent<PositionRotationTracker>().enabled = true;
-            }
         }
 
-        //if cursor is invisible
         else
         {
-            //NOT CHECKING FOR PAUSE IN HOME FOR NO-CURSORS! FIX THIS
-            //if cursor is paused
-            if (isPaused && !isInHomeArea)
+
+            //if cursor is visible..
+            if (exampleController.trialType.Contains("rotated") || exampleController.trialType.Contains("clamped") || exampleController.trialType.Contains("aligned"))
             {
-                //disable the tracker script (for the return to home position)
-                trackerHolderObject.GetComponent<PositionRotationTracker>().enabled = false;
+                //if cursor is paused AND in target
+                if (isPaused && isInTarget)
+                {
+                    //disable the tracker script (for the return to home position)
+                    trackerHolderObject.GetComponent<PositionRotationTracker>().enabled = false;
 
-                isPaused = false;
-                isInTarget = false;
+                    isPaused = false;
+                    isInTarget = false;
 
-                CancelInvoke("CheckForPause");
+                    CancelInvoke("CheckForPause");
 
-                //make the cursor disappear
-                GetComponent<MeshRenderer>().enabled = false;
+                    //make the cursor disappear
+                    GetComponent<MeshRenderer>().enabled = false;
 
-                //start the next trial
-                exampleController.EndAndPrepare();
+                    //start the next trial
+                    exampleController.EndAndPrepare();
+                }
+
+                if (isPaused && isInHome && exampleController.isDoneInstruction)
+                {
+                    //Turn off home
+                    homePosition.SetActive(false);
+
+                    isInHome = false;
+                    isPaused = false;
+
+                    CancelInvoke("CheckForPause");
+
+                    //make the cursor reappear
+                    GetComponent<MeshRenderer>().enabled = true;
+
+                    //Create target
+                    //randomize location of target
+                    //Vector3 newTargetPosition = new Vector3(UnityEngine.Random.Range(-0.25f, 0.25f), 0.7f, UnityEngine.Random.Range(0.35f, 0.45f));
+                    //Quaternion targetRotation = new Quaternion(0, 0, 0, 0);
+                    //Instantiate(target, exampleController.targetPosition, targetRotation);
+
+                    targetHolderController.InstantiateTarget();
+
+                    //enable the tracker script (for the reach to target)
+                    trackerHolderObject.GetComponent<PositionRotationTracker>().enabled = true;
+                }
             }
 
-            if (isInHome && isPaused && exampleController.isDoneInstruction)
+            //if cursor is invisible
+            else
             {
-                //Turn off home
-                homePosition.SetActive(false);
+                //NOT CHECKING FOR PAUSE IN HOME FOR NO-CURSORS! FIX THIS
+                //if cursor is paused
+                if (isPaused && !isInHomeArea)
+                {
+                    //disable the tracker script (for the return to home position)
+                    trackerHolderObject.GetComponent<PositionRotationTracker>().enabled = false;
 
-                isInHome = false;
-                isPaused = false;
+                    isPaused = false;
+                    isInTarget = false;
 
-                CancelInvoke("CheckForPause");
+                    CancelInvoke("CheckForPause");
 
-                //make the cursor stay invisible
-                GetComponent<MeshRenderer>().enabled = false;
+                    //make the cursor disappear
+                    GetComponent<MeshRenderer>().enabled = false;
 
-                //Create target
-                //randomize location of target
-                //Vector3 newTargetPosition = new Vector3(UnityEngine.Random.Range(-0.25f, 0.25f), 0.7f, UnityEngine.Random.Range(0.35f, 0.45f));
-                //Quaternion targetRotation = new Quaternion(0, 0, 0, 0);
-                //Instantiate(target, exampleController.targetPosition, targetRotation);
+                    //start the next trial
+                    exampleController.EndAndPrepare();
+                }
 
-                targetHolderController.InstantiateTarget();
+                if (isInHome && isPaused && exampleController.isDoneInstruction)
+                {
+                    //Turn off home
+                    homePosition.SetActive(false);
 
-                //enable the tracker script (for the reach to target)
-                trackerHolderObject.GetComponent<PositionRotationTracker>().enabled = true;
+                    isInHome = false;
+                    isPaused = false;
+
+                    CancelInvoke("CheckForPause");
+
+                    //make the cursor stay invisible
+                    GetComponent<MeshRenderer>().enabled = false;
+
+                    //Create target
+                    //randomize location of target
+                    //Vector3 newTargetPosition = new Vector3(UnityEngine.Random.Range(-0.25f, 0.25f), 0.7f, UnityEngine.Random.Range(0.35f, 0.45f));
+                    //Quaternion targetRotation = new Quaternion(0, 0, 0, 0);
+                    //Instantiate(target, exampleController.targetPosition, targetRotation);
+
+                    targetHolderController.InstantiateTarget();
+
+                    //enable the tracker script (for the reach to target)
+                    trackerHolderObject.GetComponent<PositionRotationTracker>().enabled = true;
+                }
             }
         }
     }
