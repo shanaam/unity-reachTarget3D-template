@@ -4,11 +4,14 @@ using UnityEngine;
 using System.IO;
 using UXF;
 using System;
+using TMPro;
 
 
 public class ExampleController : MonoBehaviour {
 
     Session session;
+
+    public TextMeshPro instructionTextMesh;
 
     public GameObject homePositionObject;
     public GameObject handCursorObject;
@@ -57,6 +60,7 @@ public class ExampleController : MonoBehaviour {
         alignedReachBlock1.settings["visible_cursor"] = true;
         alignedReachBlock1.settings["rotation"] = 0;
         alignedReachBlock1.settings["show_instruction"] = true;
+        alignedReachBlock1.settings["instruction_text"] = "Reach to the Target";
 
         //make the first rotated block
         int numRotatedTrials1 = Convert.ToInt32(session.settings["num_trials_rotated_reach_1"]);
@@ -65,6 +69,7 @@ public class ExampleController : MonoBehaviour {
         rotatedReachBlock1.settings["visible_cursor"] = true;
         rotatedReachBlock1.settings["rotation"] = rotationSize1;
         rotatedReachBlock1.settings["show_instruction"] = false;
+        rotatedReachBlock1.settings["instruction_text"] = "Reach to the Target";
 
         //make the second rotated block
         int numRotatedTrials2 = Convert.ToInt32(session.settings["num_trials_rotated_reach_2"]);
@@ -72,7 +77,8 @@ public class ExampleController : MonoBehaviour {
         rotatedReachBlock2.settings["trial_type"] = "rotated_2";
         rotatedReachBlock2.settings["visible_cursor"] = true;
         rotatedReachBlock2.settings["rotation"] = rotationSize2;
-        rotatedReachBlock2.settings["show_instruction"] = true;
+        rotatedReachBlock2.settings["show_instruction"] = false;
+        rotatedReachBlock2.settings["instruction_text"] = "Reach to the Target";
 
         //make the no_cursor blocks (open JSON file to check the correct names)
         int numNoCursorTrials1 = Convert.ToInt32(session.settings["num_trials_noCursor_reach_1"]);
@@ -81,6 +87,7 @@ public class ExampleController : MonoBehaviour {
         noCursorBlock1.settings["visible_cursor"] = false;
         noCursorBlock1.settings["rotation"] = 0;
         noCursorBlock1.settings["show_instruction"] = true;
+        noCursorBlock1.settings["instruction_text"] = "Reach WITHOUT Strategy";
 
         //make the clamped blocks (open JSON file to check the correct names)
         int numClampedTrials1 = Convert.ToInt32(session.settings["num_trials_clamped_reach_1"]);
@@ -89,6 +96,7 @@ public class ExampleController : MonoBehaviour {
         clampedBlock1.settings["visible_cursor"] = false;
         clampedBlock1.settings["rotation"] = 0;
         clampedBlock1.settings["show_instruction"] = true;
+        clampedBlock1.settings["instruction_text"] = "Reach to the Target";
 
 
         //quit the game if any of the trial numbers are not divisible by the number of trials
@@ -98,7 +106,7 @@ public class ExampleController : MonoBehaviour {
 
         if(Math.Abs(maxTarget - minTarget) % numTargets != 0)
         {
-            print("WARNING: Check your trial settings for target positions and numbers");
+            Debug.Log("WARNING: Check your trial settings for target positions and numbers");
         }
 
         int targetStep = Math.Abs(maxTarget - minTarget) / (numTargets - 1);
@@ -123,6 +131,9 @@ public class ExampleController : MonoBehaviour {
         // If the trial is the first trial in the block
         if (trial.numberInBlock == 1)
         {
+            //Set the instruction text to instruction_text
+            instructionTextMesh.text = Convert.ToString(trial.settings["instruction_text"]);
+
             // If showInstruction is true
             if (Convert.ToBoolean(trial.settings["show_instruction"]) == true)
             {
