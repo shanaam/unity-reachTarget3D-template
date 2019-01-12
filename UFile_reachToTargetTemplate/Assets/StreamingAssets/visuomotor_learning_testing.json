@@ -1,0 +1,13 @@
+{
+    "num_trials_aligned_reach_1": 3,
+    "num_trials_rotated_reach_1": 6,
+    "num_trials_rotated_reach_2": 6,
+    "num_trials_noCursor_reach_1": 3,
+    "num_trials_clamped_reach_1": 6,
+    "rotation_1": 30,
+    "rotation_2": -30,
+    "min_target": 45,
+    "max_target": 135,
+    "num_targets": 3,
+    "test_to_log": "testing"
+}

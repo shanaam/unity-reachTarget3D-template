@@ -95,7 +95,7 @@ public class ExampleController : MonoBehaviour {
         clampedBlock1.settings["trial_type"] = "clamped";
         clampedBlock1.settings["visible_cursor"] = false;
         clampedBlock1.settings["rotation"] = 0;
-        clampedBlock1.settings["show_instruction"] = true;
+        clampedBlock1.settings["show_instruction"] = false;
         clampedBlock1.settings["instruction_text"] = "Reach to the Target";
 
 
