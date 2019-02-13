@@ -1,5 +1,5 @@
 {
-        "gradual_step": 1,
+        "gradual_step": 8.33,
         "num_trials_aligned_reach_1_1": 2,
         "num_trials_rotated_reach_1_2": 4,
         "num_trials_rotated_reach_1_3": 2,

@@ -1,21 +1,33 @@
 timestamp,log_type,message
 0.02,Warning,"A Canvas named ""[UXF_UI]"" with a render mode of ScreenSpaceOverlay is being used while VR is also enabled. This Canvas will continue to incur a rendering cost but will not be visible while in VR. Is this intentional?"
-2.029082,Log,Loaded: D:\shanaa\repos\unity-reachTarget3D-template\UFile_reachTargetTemplate\data\testing_participant_list.csv
-9.244066,Log,Updating: D:\shanaa\repos\unity-reachTarget3D-template\UFile_reachTargetTemplate\data\testing_participant_list.csv
-10.91123,Warning,Warning: Session already exists! Continuing will overwrite
-10.91123,Log,show instruction = true  expanding
-10.91123,Log,0
-26.9724,Log,0
-31.55023,Log,show instruction = false  doing nothing
-31.55023,Log,0
-34.40529,Log,-1
-36.98333,Log,-2
-39.39462,Log,-3
-43.35052,Log,show instruction = false  doing nothing
-43.35052,Log,30
-46.39475,Log,30
-49.26117,Log,show instruction = false  doing nothing
-49.26117,Log,0
-52.45061,Log,0
-54.79458,Log,show instruction = true  expanding
-54.79458,Log,0
+3.718569,Log,Loaded: D:\shanaa\repos\unity-reachTarget3D-template\UFile_reachTargetTemplate\data\testing_participant_list.csv
+8.645948,Log,Updating: D:\shanaa\repos\unity-reachTarget3D-template\UFile_reachTargetTemplate\data\testing_participant_list.csv
+9.744129,Warning,Warning: Session already exists! Continuing will overwrite
+9.744129,Log,show instruction = true  expanding
+9.744129,Log,0
+30.94219,Log,0
+33.209,Log,show instruction = false  doing nothing
+33.209,Log,0
+36.47543,Log,-8.33
+38.97543,Log,-16.66
+41.90888,Log,-24.99
+45.13105,Log,show instruction = false  doing nothing
+45.13105,Log,30
+48.11998,Log,30
+50.82015,Log,show instruction = false  doing nothing
+50.82015,Log,0
+53.88676,Log,0
+56.42008,Log,show instruction = true  expanding
+56.42008,Log,0
+64.72044,Log,0
+67.42075,Log,show instruction = false  doing nothing
+67.42075,Log,30
+70.39802,Log,30
+73.05368,Log,30
+75.50937,Log,30
+78.82117,Log,show instruction = false  doing nothing
+78.82117,Log,-30
+82.83157,Log,-30
+85.59825,Log,show instruction = false  doing nothing
+85.59825,Log,0
+88.58721,Log,0
