@@ -5,6 +5,8 @@ using UnityEngine;
 public class TargetHolderController : MonoBehaviour {
 
     public GameObject targetPrefab;
+    public ExampleController exampleController;
+
     public float targetDistance = 0.12f;
 	// Use this for initialization
 	void Start () {
@@ -15,7 +17,7 @@ public class TargetHolderController : MonoBehaviour {
     {
         //the distance to instantiate the target is stored in the z position
         var target = Instantiate(targetPrefab, transform);
-        target.transform.localPosition = new Vector3(0, 0, targetDistance);
+        target.transform.localPosition = new Vector3(0, exampleController.targetYOffset, targetDistance);
     }
 
     // Method for destroying the target (called at the end of each trial

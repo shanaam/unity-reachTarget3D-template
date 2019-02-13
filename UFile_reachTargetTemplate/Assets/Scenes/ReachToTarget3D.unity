@@ -331,6 +331,7 @@ MonoBehaviour:
   instructionController: {fileID: 1657528272}
   isDoneInstruction: 0
   trialType: 
+  targetYOffset: 0
 --- !u!114 &174332711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,6 +611,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPrefab: {fileID: 1153151479510208, guid: 4e18c729a3cdb344e924b2d1fb6a05c9,
     type: 2}
+  exampleController: {fileID: 174332710}
   targetDistance: 0.12
 --- !u!4 &339582018
 Transform:
@@ -1889,7 +1891,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4387668440234660, guid: 5bd70a33951586a43a423d1366da97c0, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1466427836474396, guid: 5bd70a33951586a43a423d1366da97c0, type: 2}
       propertyPath: m_IsActive

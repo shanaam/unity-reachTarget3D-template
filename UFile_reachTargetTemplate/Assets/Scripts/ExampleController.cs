@@ -24,12 +24,12 @@ public class ExampleController : MonoBehaviour {
 
     public bool isDoneInstruction = false;
     public string trialType = null;
-    //public Vector3 targetPosition = new Vector3();
+    public float targetYOffset;
 
     List<int> targetList_1 = new List<int>();
     List<int> targetList_2 = new List<int>();
     List<int> shuffledTargetList = new List<int>();
-    int gradualStep;
+    float gradualStep;
     float rotationAngle;                                     //used to set rotation in EACH trial
 
     //GENERATE TRIALS AND BLOCK!!!
@@ -49,39 +49,28 @@ public class ExampleController : MonoBehaviour {
 
         //after I do _________ ExperimentSession.settings will have all the settings in the JSON file
 
-        float rotationSize1_1 = Convert.ToInt32(session.settings["rotation_1_1"]);
         float rotationSize1_2 = Convert.ToInt32(session.settings["rotation_1_2"]);
-        float rotationSize2_1 = Convert.ToInt32(session.settings["rotation_2_1"]);
+        float rotationSize1_3 = Convert.ToInt32(session.settings["rotation_1_3"]);
         float rotationSize2_2 = Convert.ToInt32(session.settings["rotation_2_2"]);
+        float rotationSize2_3 = Convert.ToInt32(session.settings["rotation_2_3"]);
 
-        gradualStep = Convert.ToInt32(session.settings["gradual_step"]);
+        gradualStep = (float)Convert.ToDouble(session.settings["gradual_step"]);
 
         //makes the blocks and trials!
         //first grab the settings to figure out trial numbers and make the first BLOCK
-        int numAlignedTrials1 = Convert.ToInt32(session.settings["num_trials_aligned_reach_1_1"]);
-        Block alignedReachBlock1_1 = session.CreateBlock(numAlignedTrials1);
-        alignedReachBlock1_1.settings["trial_type"] = "aligned_1";
+        int numAlignedTrials1_1 = Convert.ToInt32(session.settings["num_trials_aligned_reach_1_1"]);
+        Block alignedReachBlock1_1 = session.CreateBlock(numAlignedTrials1_1);
+        alignedReachBlock1_1.settings["trial_type"] = "aligned_1_1";
         alignedReachBlock1_1.settings["visible_cursor"] = true;
         alignedReachBlock1_1.settings["rotation"] = 0;
         alignedReachBlock1_1.settings["show_instruction"] = true;
         alignedReachBlock1_1.settings["instruction_text"] = "Reach to the Target";
         alignedReachBlock1_1.settings["target_list_to_use"] = 1;
+        alignedReachBlock1_1.settings["target_y_offset"] = Convert.ToDouble(session.settings["target_y_offset_1_1"]);
+
 
 
         //make the first rotated block
-        int numRotatedTrials1_1 = Convert.ToInt32(session.settings["num_trials_rotated_reach_1_1"]);
-        bool isGradual1_1 = Convert.ToBoolean(session.settings["is_gradual_1_1"]);
-        Block rotatedReachBlock1_1 = session.CreateBlock(numRotatedTrials1_1);
-        rotatedReachBlock1_1.settings["trial_type"] = "rotated_1_1";
-        rotatedReachBlock1_1.settings["visible_cursor"] = true;
-        rotatedReachBlock1_1.settings["rotation"] = rotationSize1_2;
-        rotatedReachBlock1_1.settings["show_instruction"] = false;
-        rotatedReachBlock1_1.settings["instruction_text"] = "Reach to the Target";
-        rotatedReachBlock1_1.settings["is_gradual"] = isGradual1_1;
-        rotatedReachBlock1_1.settings["target_list_to_use"] = 1;
-
-
-        //make the second rotated block
         int numRotatedTrials1_2 = Convert.ToInt32(session.settings["num_trials_rotated_reach_1_2"]);
         bool isGradual1_2 = Convert.ToBoolean(session.settings["is_gradual_1_2"]);
         Block rotatedReachBlock1_2 = session.CreateBlock(numRotatedTrials1_2);
@@ -92,7 +81,21 @@ public class ExampleController : MonoBehaviour {
         rotatedReachBlock1_2.settings["instruction_text"] = "Reach to the Target";
         rotatedReachBlock1_2.settings["is_gradual"] = isGradual1_2;
         rotatedReachBlock1_2.settings["target_list_to_use"] = 1;
+        rotatedReachBlock1_2.settings["target_y_offset"] = Convert.ToDouble(session.settings["target_y_offset_1_2"]);
 
+
+        //make the second rotated block
+        int numRotatedTrials1_3 = Convert.ToInt32(session.settings["num_trials_rotated_reach_1_3"]);
+        bool isGradual1_3 = Convert.ToBoolean(session.settings["is_gradual_1_3"]);
+        Block rotatedReachBlock1_3 = session.CreateBlock(numRotatedTrials1_3);
+        rotatedReachBlock1_3.settings["trial_type"] = "rotated_1_3";
+        rotatedReachBlock1_3.settings["visible_cursor"] = true;
+        rotatedReachBlock1_3.settings["rotation"] = rotationSize1_3;
+        rotatedReachBlock1_3.settings["show_instruction"] = false;
+        rotatedReachBlock1_3.settings["instruction_text"] = "Reach to the Target";
+        rotatedReachBlock1_3.settings["is_gradual"] = isGradual1_3;
+        rotatedReachBlock1_3.settings["target_list_to_use"] = 1;
+        rotatedReachBlock1_3.settings["target_y_offset"] = Convert.ToDouble(session.settings["target_y_offset_1_3"]);
 
         ////make the no_cursor blocks (open JSON file to check the correct names)
         //int numNoCursorTrials1 = Convert.ToInt32(session.settings["num_trials_noCursor_reach_1"]);
@@ -104,43 +107,31 @@ public class ExampleController : MonoBehaviour {
         //noCursorBlock1.settings["instruction_text"] = "Reach WITHOUT Strategy";
 
         //make the clamped blocks (open JSON file to check the correct names)
-        int numClampedTrials1 = Convert.ToInt32(session.settings["num_trials_clamped_reach_1_1"]);
-        Block clampedBlock1_1 = session.CreateBlock(numClampedTrials1);
-        clampedBlock1_1.settings["trial_type"] = "clamped_1";
-        clampedBlock1_1.settings["visible_cursor"] = false;
-        clampedBlock1_1.settings["rotation"] = 0;
-        clampedBlock1_1.settings["show_instruction"] = false;
-        clampedBlock1_1.settings["instruction_text"] = "Reach to the Target";
-        clampedBlock1_1.settings["target_list_to_use"] = 1;
-
+        int numClampedTrials1_4 = Convert.ToInt32(session.settings["num_trials_clamped_reach_1_4"]);
+        Block clampedBlock1_4 = session.CreateBlock(numClampedTrials1_4);
+        clampedBlock1_4.settings["trial_type"] = "clamped_1_4";
+        clampedBlock1_4.settings["visible_cursor"] = false;
+        clampedBlock1_4.settings["rotation"] = 0;
+        clampedBlock1_4.settings["show_instruction"] = false;
+        clampedBlock1_4.settings["instruction_text"] = "Reach to the Target";
+        clampedBlock1_4.settings["target_list_to_use"] = 1;
+        clampedBlock1_4.settings["target_y_offset"] = Convert.ToDouble(session.settings["target_y_offset_1_4"]);
 
 
         //Session2
         //aligned block
-        int numAlignedTrials2 = Convert.ToInt32(session.settings["num_trials_aligned_reach_2_1"]);
-        Block alignedReachBlock2_1 = session.CreateBlock(numAlignedTrials2);
-        alignedReachBlock2_1.settings["trial_type"] = "aligned_2";
+        int numAlignedTrials2_1 = Convert.ToInt32(session.settings["num_trials_aligned_reach_2_1"]);
+        Block alignedReachBlock2_1 = session.CreateBlock(numAlignedTrials2_1);
+        alignedReachBlock2_1.settings["trial_type"] = "aligned_2_1";
         alignedReachBlock2_1.settings["visible_cursor"] = true;
         alignedReachBlock2_1.settings["rotation"] = 0;
         alignedReachBlock2_1.settings["show_instruction"] = true;
         alignedReachBlock2_1.settings["instruction_text"] = "Reach to the Target";
         alignedReachBlock2_1.settings["target_list_to_use"] = 2;
+        alignedReachBlock2_1.settings["target_y_offset"] = Convert.ToDouble(session.settings["target_y_offset_2_1"]);
 
 
         //make the first rotated block
-        int numRotatedTrials2_1 = Convert.ToInt32(session.settings["num_trials_rotated_reach_2_1"]);
-        bool isGradual2_1 = Convert.ToBoolean(session.settings["is_gradual_2_1"]);
-        Block rotatedReachBlock2_1 = session.CreateBlock(numRotatedTrials2_1);
-        rotatedReachBlock2_1.settings["trial_type"] = "rotated_2_1";
-        rotatedReachBlock2_1.settings["visible_cursor"] = true;
-        rotatedReachBlock2_1.settings["rotation"] = rotationSize2_1;
-        rotatedReachBlock2_1.settings["show_instruction"] = false;
-        rotatedReachBlock2_1.settings["instruction_text"] = "Reach to the Target";
-        rotatedReachBlock2_1.settings["is_gradual"] = isGradual2_1;
-        rotatedReachBlock2_1.settings["target_list_to_use"] = 2;
-
-
-        //make the second rotated block
         int numRotatedTrials2_2 = Convert.ToInt32(session.settings["num_trials_rotated_reach_2_2"]);
         bool isGradual2_2 = Convert.ToBoolean(session.settings["is_gradual_2_2"]);
         Block rotatedReachBlock2_2 = session.CreateBlock(numRotatedTrials2_2);
@@ -151,18 +142,33 @@ public class ExampleController : MonoBehaviour {
         rotatedReachBlock2_2.settings["instruction_text"] = "Reach to the Target";
         rotatedReachBlock2_2.settings["is_gradual"] = isGradual2_2;
         rotatedReachBlock2_2.settings["target_list_to_use"] = 2;
+        rotatedReachBlock2_2.settings["target_y_offset"] = Convert.ToDouble(session.settings["target_y_offset_2_2"]);
+
+
+        //make the second rotated block
+        int numRotatedTrials2_3 = Convert.ToInt32(session.settings["num_trials_rotated_reach_2_3"]);
+        bool isGradual2_3 = Convert.ToBoolean(session.settings["is_gradual_2_3"]);
+        Block rotatedReachBlock2_3 = session.CreateBlock(numRotatedTrials2_3);
+        rotatedReachBlock2_3.settings["trial_type"] = "rotated_2_3";
+        rotatedReachBlock2_3.settings["visible_cursor"] = true;
+        rotatedReachBlock2_3.settings["rotation"] = rotationSize2_3;
+        rotatedReachBlock2_3.settings["show_instruction"] = false;
+        rotatedReachBlock2_3.settings["instruction_text"] = "Reach to the Target";
+        rotatedReachBlock2_3.settings["is_gradual"] = isGradual2_3;
+        rotatedReachBlock2_3.settings["target_list_to_use"] = 2;
+        rotatedReachBlock2_3.settings["target_y_offset"] = Convert.ToInt32(session.settings["target_y_offset_2_3"]);
 
 
         //make the clamped blocks (open JSON file to check the correct names)
-        int numClampedTrials2 = Convert.ToInt32(session.settings["num_trials_clamped_reach_2_1"]);
-        Block clampedBlock2_1 = session.CreateBlock(numClampedTrials2);
-        clampedBlock2_1.settings["trial_type"] = "clamped_2";
-        clampedBlock2_1.settings["visible_cursor"] = false;
-        clampedBlock2_1.settings["rotation"] = 0;
-        clampedBlock2_1.settings["show_instruction"] = false;
-        clampedBlock2_1.settings["instruction_text"] = "Reach to the Target";
-        clampedBlock2_1.settings["target_list_to_use"] = 2;
-
+        int numClampedTrials2_4 = Convert.ToInt32(session.settings["num_trials_clamped_reach_2_4"]);
+        Block clampedBlock2_4 = session.CreateBlock(numClampedTrials2_4);
+        clampedBlock2_4.settings["trial_type"] = "clamped_2_4";
+        clampedBlock2_4.settings["visible_cursor"] = false;
+        clampedBlock2_4.settings["rotation"] = 0;
+        clampedBlock2_4.settings["show_instruction"] = false;
+        clampedBlock2_4.settings["instruction_text"] = "Reach to the Target";
+        clampedBlock2_4.settings["target_list_to_use"] = 2;
+        clampedBlock2_4.settings["target_y_offset"] = Convert.ToDouble(session.settings["target_y_offset_2_4"]);
 
 
         //quit the game if any of the trial numbers are not divisible by the number of trials
@@ -265,6 +271,11 @@ public class ExampleController : MonoBehaviour {
         //rotate the target holder (this just needs to be done for some reason..)
         targetHolder.transform.rotation = Quaternion.Euler(0, targetLocation - 90, 0);
 
+        // here we are casting to a float (explicit conversion)
+        targetYOffset = (float)Convert.ToDouble(trial.settings["target_y_offset"]) / 100;
+        // Debug.LogFormat("targetYOffset in Controller set to {0}", targetYOffset);
+
+
         //check for clamped
         if (Convert.ToString(trial.settings["trial_type"]).Contains("clamped"))
         {
@@ -293,6 +304,8 @@ public class ExampleController : MonoBehaviour {
         {
             rotationAngle = Convert.ToSingle(trial.settings["rotation"]);
         }
+
+        // set the rotation for the trial
         rotatorObject.transform.rotation = Quaternion.Euler(0, rotationAngle, 0);
         Debug.Log(rotationAngle);
 
