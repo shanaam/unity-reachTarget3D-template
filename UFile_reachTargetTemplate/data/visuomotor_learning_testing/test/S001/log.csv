@@ -1,33 +1,33 @@
 timestamp,log_type,message
 0.02,Warning,"A Canvas named ""[UXF_UI]"" with a render mode of ScreenSpaceOverlay is being used while VR is also enabled. This Canvas will continue to incur a rendering cost but will not be visible while in VR. Is this intentional?"
-3.718569,Log,Loaded: D:\shanaa\repos\unity-reachTarget3D-template\UFile_reachTargetTemplate\data\testing_participant_list.csv
-8.645948,Log,Updating: D:\shanaa\repos\unity-reachTarget3D-template\UFile_reachTargetTemplate\data\testing_participant_list.csv
-9.744129,Warning,Warning: Session already exists! Continuing will overwrite
-9.744129,Log,show instruction = true  expanding
-9.744129,Log,0
-30.94219,Log,0
-33.209,Log,show instruction = false  doing nothing
-33.209,Log,0
-36.47543,Log,-8.33
-38.97543,Log,-16.66
-41.90888,Log,-24.99
-45.13105,Log,show instruction = false  doing nothing
-45.13105,Log,30
-48.11998,Log,30
-50.82015,Log,show instruction = false  doing nothing
-50.82015,Log,0
-53.88676,Log,0
-56.42008,Log,show instruction = true  expanding
-56.42008,Log,0
-64.72044,Log,0
-67.42075,Log,show instruction = false  doing nothing
-67.42075,Log,30
-70.39802,Log,30
-73.05368,Log,30
-75.50937,Log,30
-78.82117,Log,show instruction = false  doing nothing
-78.82117,Log,-30
-82.83157,Log,-30
-85.59825,Log,show instruction = false  doing nothing
-85.59825,Log,0
-88.58721,Log,0
+1.989036,Log,Loaded: D:\shanaa\repos\unity-reachTarget3D-template\UFile_reachTargetTemplate\data\testing_participant_list.csv
+4.845208,Log,Updating: D:\shanaa\repos\unity-reachTarget3D-template\UFile_reachTargetTemplate\data\testing_participant_list.csv
+5.901057,Warning,Warning: Session already exists! Continuing will overwrite
+5.901057,Log,show instruction = true  expanding
+5.901057,Log,0
+24.93106,Log,0
+28.65381,Log,show instruction = false  doing nothing
+28.65381,Log,0
+31.79792,Log,-8.33
+35.09823,Log,-16.66
+38.42006,Log,-24.99
+42.27574,Log,show instruction = false  doing nothing
+42.27574,Log,30
+45.97579,Log,30
+48.90912,Log,show instruction = false  doing nothing
+48.90912,Log,0
+52.13155,Log,0
+55.15393,Log,show instruction = true  expanding
+55.15393,Log,0
+62.87623,Log,0
+65.92057,Log,show instruction = false  doing nothing
+65.92057,Log,30
+69.12055,Log,30
+72.38708,Log,30
+75.53165,Log,30
+78.69849,Log,show instruction = false  doing nothing
+78.69849,Log,-30
+82.23179,Log,-30
+85.28741,Log,show instruction = false  doing nothing
+85.28741,Log,0
+133.588,Log,0

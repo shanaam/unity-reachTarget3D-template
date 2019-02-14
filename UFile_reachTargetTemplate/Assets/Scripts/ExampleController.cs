@@ -21,6 +21,7 @@ public class ExampleController : MonoBehaviour {
     public GameObject targetHolder;
     public TargetHolderController targetHolderController;
     public InstructionController instructionController;
+    public PlaneController planeController;
 
     public bool isDoneInstruction = false;
     public string trialType = null;
@@ -67,7 +68,7 @@ public class ExampleController : MonoBehaviour {
         alignedReachBlock1_1.settings["instruction_text"] = "Reach to the Target";
         alignedReachBlock1_1.settings["target_list_to_use"] = 1;
         alignedReachBlock1_1.settings["target_y_offset"] = Convert.ToDouble(session.settings["target_y_offset_1_1"]);
-
+        alignedReachBlock1_1.settings["plane_settings"] = Convert.ToString(session.settings["plane_settings_1_1"]);
 
 
         //make the first rotated block
@@ -82,6 +83,7 @@ public class ExampleController : MonoBehaviour {
         rotatedReachBlock1_2.settings["is_gradual"] = isGradual1_2;
         rotatedReachBlock1_2.settings["target_list_to_use"] = 1;
         rotatedReachBlock1_2.settings["target_y_offset"] = Convert.ToDouble(session.settings["target_y_offset_1_2"]);
+        rotatedReachBlock1_2.settings["plane_settings"] = Convert.ToString(session.settings["plane_settings_1_2"]);
 
 
         //make the second rotated block
@@ -96,6 +98,8 @@ public class ExampleController : MonoBehaviour {
         rotatedReachBlock1_3.settings["is_gradual"] = isGradual1_3;
         rotatedReachBlock1_3.settings["target_list_to_use"] = 1;
         rotatedReachBlock1_3.settings["target_y_offset"] = Convert.ToDouble(session.settings["target_y_offset_1_3"]);
+        rotatedReachBlock1_3.settings["plane_settings"] = Convert.ToString(session.settings["plane_settings_1_3"]);
+
 
         ////make the no_cursor blocks (open JSON file to check the correct names)
         //int numNoCursorTrials1 = Convert.ToInt32(session.settings["num_trials_noCursor_reach_1"]);
@@ -116,6 +120,7 @@ public class ExampleController : MonoBehaviour {
         clampedBlock1_4.settings["instruction_text"] = "Reach to the Target";
         clampedBlock1_4.settings["target_list_to_use"] = 1;
         clampedBlock1_4.settings["target_y_offset"] = Convert.ToDouble(session.settings["target_y_offset_1_4"]);
+        clampedBlock1_4.settings["plane_settings"] = Convert.ToString(session.settings["plane_settings_1_4"]);
 
 
         //Session2
@@ -129,6 +134,7 @@ public class ExampleController : MonoBehaviour {
         alignedReachBlock2_1.settings["instruction_text"] = "Reach to the Target";
         alignedReachBlock2_1.settings["target_list_to_use"] = 2;
         alignedReachBlock2_1.settings["target_y_offset"] = Convert.ToDouble(session.settings["target_y_offset_2_1"]);
+        alignedReachBlock2_1.settings["plane_settings"] = Convert.ToString(session.settings["plane_settings_2_1"]);
 
 
         //make the first rotated block
@@ -143,6 +149,7 @@ public class ExampleController : MonoBehaviour {
         rotatedReachBlock2_2.settings["is_gradual"] = isGradual2_2;
         rotatedReachBlock2_2.settings["target_list_to_use"] = 2;
         rotatedReachBlock2_2.settings["target_y_offset"] = Convert.ToDouble(session.settings["target_y_offset_2_2"]);
+        rotatedReachBlock2_2.settings["plane_settings"] = Convert.ToString(session.settings["plane_settings_2_2"]);
 
 
         //make the second rotated block
@@ -157,6 +164,7 @@ public class ExampleController : MonoBehaviour {
         rotatedReachBlock2_3.settings["is_gradual"] = isGradual2_3;
         rotatedReachBlock2_3.settings["target_list_to_use"] = 2;
         rotatedReachBlock2_3.settings["target_y_offset"] = Convert.ToInt32(session.settings["target_y_offset_2_3"]);
+        rotatedReachBlock2_3.settings["plane_settings"] = Convert.ToString(session.settings["plane_settings_2_3"]);
 
 
         //make the clamped blocks (open JSON file to check the correct names)
@@ -169,6 +177,7 @@ public class ExampleController : MonoBehaviour {
         clampedBlock2_4.settings["instruction_text"] = "Reach to the Target";
         clampedBlock2_4.settings["target_list_to_use"] = 2;
         clampedBlock2_4.settings["target_y_offset"] = Convert.ToDouble(session.settings["target_y_offset_2_4"]);
+        clampedBlock2_4.settings["plane_settings"] = Convert.ToString(session.settings["plane_settings_2_4"]);
 
 
         //quit the game if any of the trial numbers are not divisible by the number of trials
@@ -317,6 +326,24 @@ public class ExampleController : MonoBehaviour {
 
         //Debug.LogFormat("the cursor is {0}", trialType);
 
+        // change plane settings for this trial
+        if (Convert.ToString(trial.settings["plane_settings"]).Contains("tilt_on_x"))
+        {
+            StartCoroutine(planeController.setToTiltOnX());
+        }
+        else if (Convert.ToString(trial.settings["plane_settings"]).Contains("tilt_on_z"))
+        {
+            StartCoroutine(planeController.setToTiltOnZ());
+        }
+        else if (Convert.ToString(trial.settings["plane_settings"]).Contains("flat"))
+        {
+            StartCoroutine(planeController.setToFlat());
+        }
+        else
+        {
+            planeController.setToNone();
+        }
+
         //add these things to the trial_results csv (per trial)
         trial.result["trial_type"] = trial.settings["trial_type"];
         trial.result["cursor_visibility"] = trial.settings["visible_cursor"];
@@ -363,4 +390,19 @@ public class ExampleController : MonoBehaviour {
     //    //returning 0 will make it wait 1 frame
     //    yield return 0;
     //}
+
+    // vibrate controller for 0.2 seconds
+    public void ShortVibrateController()
+    {
+        // make the controller vibrate
+        OVRInput.SetControllerVibration(1, 0.6f);
+
+        // stop the vibration after x seconds
+        Invoke("StopVibrating", 0.2f);
+    }
+
+    public void StopVibrating()
+    {
+        OVRInput.SetControllerVibration(0, 0);
+    }
 }

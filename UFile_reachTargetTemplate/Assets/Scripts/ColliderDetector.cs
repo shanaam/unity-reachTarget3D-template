@@ -40,6 +40,9 @@ public class ColliderDetector : MonoBehaviour {
 
         else if (other.CompareTag("Home"))
         {
+            // make the controller vibrate
+            exampleController.ShortVibrateController();
+
             isInHome = true;
         }
 
@@ -295,4 +298,5 @@ public class ColliderDetector : MonoBehaviour {
     //{
     //    Debug.Log(gameObject.name);
     //}
+
 }
