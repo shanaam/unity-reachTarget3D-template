@@ -14,6 +14,7 @@ public class ColliderDetector : MonoBehaviour {
     public GameObject target;
     public GameObject trackerHolderObject;
     public GameObject homePosition;
+    public GameObject returnHelper;
 
     //for pausing to end trial
     //make list
@@ -35,7 +36,6 @@ public class ColliderDetector : MonoBehaviour {
         if (other.CompareTag("Target"))
         {
             isInTarget = true;
-            targetReached = true;
         }
 
         else if (other.CompareTag("Home"))
@@ -58,6 +58,15 @@ public class ColliderDetector : MonoBehaviour {
 
             InvokeRepeating("CheckForPause", 0, checkForPauseRate);
             //Debug.Log("Check For Pause!");
+
+            // Activate return helper for clamped and no cursor trials
+            if (exampleController.trialType.Contains("no_cursor") || exampleController.trialType.Contains("clamped"))
+            {
+                if (targetReached)
+                {
+                    returnHelper.SetActive(true);
+                }
+            }
         }
 
         else if (other.CompareTag("InstructionAcceptor"))
@@ -86,6 +95,9 @@ public class ColliderDetector : MonoBehaviour {
 
             //start coroutine???
             //StartCoroutine("StartRecordingDistance");
+
+            // Deactivate return helper after clamped and no cursor trials
+            returnHelper.SetActive(false);
         }
 
         else if (other.CompareTag("Target"))
@@ -138,12 +150,7 @@ public class ColliderDetector : MonoBehaviour {
 
                     CancelInvoke("CheckForPause");
 
-                    //make the cursor disappear only during clamped trials 
-
-                    //if (exampleController.trialType.Contains("clamped") && gameObject.name != "Clamped Cursor")
-                    //{
-                    //    GetComponent<MeshRenderer>().enabled = false;
-                    //}
+                    targetReached = true;
 
                     //Destroy old target 
                     targetHolderController.DestroyTarget();
@@ -161,9 +168,6 @@ public class ColliderDetector : MonoBehaviour {
                     //isPaused = false;
 
                     CancelInvoke("CheckForPause");
-
-                    //make the cursor reappear
-                    //GetComponent<MeshRenderer>().enabled = true;
 
                     //Create random target
                     //Vector3 newTargetPosition = new Vector3(UnityEngine.Random.Range(-0.25f, 0.25f), 0.7f, UnityEngine.Random.Range(0.35f, 0.45f));
@@ -193,7 +197,6 @@ public class ColliderDetector : MonoBehaviour {
             //if cursor is invisible
             else
             {
-                //NOT CHECKING FOR PAUSE IN HOME FOR NO-CURSORS! FIX THIS
                 //if cursor is paused
                 if (isPaused && !isInHomeArea)
                 {
@@ -205,14 +208,14 @@ public class ColliderDetector : MonoBehaviour {
 
                     CancelInvoke("CheckForPause");
 
-                    //make the cursor disappear
-                    GetComponent<MeshRenderer>().enabled = false;
-
                     //Destroy old target 
                     targetHolderController.DestroyTarget();
 
                     //Create homeposition
                     homePosition.SetActive(true);
+
+                    // set target reached -- so that a trial can end (in non-noCursor tasks, this happens when people actually reach the target)
+                    targetReached = true;
                 }
 
                 if (isInHome && isPaused && exampleController.isDoneInstruction)
@@ -224,9 +227,6 @@ public class ColliderDetector : MonoBehaviour {
                     //isPaused = false;
 
                     CancelInvoke("CheckForPause");
-
-                    //make the cursor stay invisible
-                    GetComponent<MeshRenderer>().enabled = false;
 
                     //Create random target
                     //randomize location of target

@@ -300,6 +300,7 @@
      <Compile Include="Assets\Scripts\InstructionController.cs" />
      <Compile Include="Assets\Scripts\PlaneController.cs" />
      <Compile Include="Assets\Scripts\RealHandController.cs" />
+     <Compile Include="Assets\Scripts\ReturnHelperController.cs" />
      <Compile Include="Assets\Scripts\TargetHolderController.cs" />
      <Compile Include="Assets\UXF\Scripts\ApplicationHandler.cs" />
      <Compile Include="Assets\UXF\Scripts\CSVReader\CSV.cs" />

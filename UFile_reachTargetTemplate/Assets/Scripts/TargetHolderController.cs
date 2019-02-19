@@ -17,7 +17,7 @@ public class TargetHolderController : MonoBehaviour {
     {
         //the distance to instantiate the target is stored in the z position
         var target = Instantiate(targetPrefab, transform);
-        target.transform.localPosition = new Vector3(0, exampleController.targetYOffset, targetDistance);
+        target.transform.localPosition = new Vector3(0, 0, targetDistance);
     }
 
     // Method for destroying the target (called at the end of each trial

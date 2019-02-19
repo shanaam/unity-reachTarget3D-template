@@ -19,6 +19,7 @@ public class ExampleController : MonoBehaviour {
     public GameObject trackerHolderObject;
     public GameObject rotatorObject;
     public GameObject targetHolder;
+    public GameObject returnHelper;
     public TargetHolderController targetHolderController;
     public InstructionController instructionController;
     public PlaneController planeController;
@@ -32,6 +33,7 @@ public class ExampleController : MonoBehaviour {
     List<int> shuffledTargetList = new List<int>();
     float gradualStep;
     float rotationAngle;                                     //used to set rotation in EACH trial
+    int targetStep;
 
     //GENERATE TRIALS AND BLOCK!!!
     private void Start()
@@ -101,26 +103,29 @@ public class ExampleController : MonoBehaviour {
         rotatedReachBlock1_3.settings["plane_settings"] = Convert.ToString(session.settings["plane_settings_1_3"]);
 
 
-        ////make the no_cursor blocks (open JSON file to check the correct names)
-        //int numNoCursorTrials1 = Convert.ToInt32(session.settings["num_trials_noCursor_reach_1"]);
-        //Block noCursorBlock1 = session.CreateBlock(numNoCursorTrials1);
-        //noCursorBlock1.settings["trial_type"] = "no_cursor";
-        //noCursorBlock1.settings["visible_cursor"] = false;
-        //noCursorBlock1.settings["rotation"] = 0;
-        //noCursorBlock1.settings["show_instruction"] = true;
-        //noCursorBlock1.settings["instruction_text"] = "Reach WITHOUT Strategy";
+        //make the no_cursor blocks (open JSON file to check the correct names)
+        int numNoCursorTrials1_4 = Convert.ToInt32(session.settings["num_trials_noCursor_reach_1_4"]);
+        Block noCursorBlock1_4 = session.CreateBlock(numNoCursorTrials1_4);
+        noCursorBlock1_4.settings["trial_type"] = "no_cursor";
+        noCursorBlock1_4.settings["visible_cursor"] = false;
+        noCursorBlock1_4.settings["rotation"] = 0;
+        noCursorBlock1_4.settings["show_instruction"] = true;
+        noCursorBlock1_4.settings["instruction_text"] = "Reach WITHOUT Strategy";
+        noCursorBlock1_4.settings["target_list_to_use"] = 1;
+        noCursorBlock1_4.settings["target_y_offset"] = Convert.ToDouble(session.settings["target_y_offset_1_4"]);
+        noCursorBlock1_4.settings["plane_settings"] = Convert.ToString(session.settings["plane_settings_1_4"]);
 
-        //make the clamped blocks (open JSON file to check the correct names)
-        int numClampedTrials1_4 = Convert.ToInt32(session.settings["num_trials_clamped_reach_1_4"]);
-        Block clampedBlock1_4 = session.CreateBlock(numClampedTrials1_4);
-        clampedBlock1_4.settings["trial_type"] = "clamped_1_4";
-        clampedBlock1_4.settings["visible_cursor"] = false;
-        clampedBlock1_4.settings["rotation"] = 0;
-        clampedBlock1_4.settings["show_instruction"] = false;
-        clampedBlock1_4.settings["instruction_text"] = "Reach to the Target";
-        clampedBlock1_4.settings["target_list_to_use"] = 1;
-        clampedBlock1_4.settings["target_y_offset"] = Convert.ToDouble(session.settings["target_y_offset_1_4"]);
-        clampedBlock1_4.settings["plane_settings"] = Convert.ToString(session.settings["plane_settings_1_4"]);
+        ////make the clamped blocks (open JSON file to check the correct names)
+        //int numClampedTrials1_4 = Convert.ToInt32(session.settings["num_trials_clamped_reach_1_4"]);
+        //Block clampedBlock1_4 = session.CreateBlock(numClampedTrials1_4);
+        //clampedBlock1_4.settings["trial_type"] = "clamped_1_4";
+        //clampedBlock1_4.settings["visible_cursor"] = false;
+        //clampedBlock1_4.settings["rotation"] = 0;
+        //clampedBlock1_4.settings["show_instruction"] = false;
+        //clampedBlock1_4.settings["instruction_text"] = "Reach to the Target";
+        //clampedBlock1_4.settings["target_list_to_use"] = 1;
+        //clampedBlock1_4.settings["target_y_offset"] = Convert.ToDouble(session.settings["target_y_offset_1_4"]);
+        //clampedBlock1_4.settings["plane_settings"] = Convert.ToString(session.settings["plane_settings_1_4"]);
 
 
         //Session2
@@ -167,18 +172,17 @@ public class ExampleController : MonoBehaviour {
         rotatedReachBlock2_3.settings["plane_settings"] = Convert.ToString(session.settings["plane_settings_2_3"]);
 
 
-        //make the clamped blocks (open JSON file to check the correct names)
-        int numClampedTrials2_4 = Convert.ToInt32(session.settings["num_trials_clamped_reach_2_4"]);
-        Block clampedBlock2_4 = session.CreateBlock(numClampedTrials2_4);
-        clampedBlock2_4.settings["trial_type"] = "clamped_2_4";
-        clampedBlock2_4.settings["visible_cursor"] = false;
-        clampedBlock2_4.settings["rotation"] = 0;
-        clampedBlock2_4.settings["show_instruction"] = false;
-        clampedBlock2_4.settings["instruction_text"] = "Reach to the Target";
-        clampedBlock2_4.settings["target_list_to_use"] = 2;
-        clampedBlock2_4.settings["target_y_offset"] = Convert.ToDouble(session.settings["target_y_offset_2_4"]);
-        clampedBlock2_4.settings["plane_settings"] = Convert.ToString(session.settings["plane_settings_2_4"]);
-
+        //make the no_cursor blocks (open JSON file to check the correct names)
+        int numNoCursorTrials2_4 = Convert.ToInt32(session.settings["num_trials_noCursor_reach_2_4"]);
+        Block noCursorBlock2_4 = session.CreateBlock(numNoCursorTrials2_4);
+        noCursorBlock2_4.settings["trial_type"] = "no_cursor";
+        noCursorBlock2_4.settings["visible_cursor"] = false;
+        noCursorBlock2_4.settings["rotation"] = 0;
+        noCursorBlock2_4.settings["show_instruction"] = true;
+        noCursorBlock2_4.settings["instruction_text"] = "Reach WITHOUT Strategy";
+        noCursorBlock2_4.settings["target_list_to_use"] = 2;
+        noCursorBlock2_4.settings["target_y_offset"] = Convert.ToDouble(session.settings["target_y_offset_2_4"]);
+        noCursorBlock2_4.settings["plane_settings"] = Convert.ToString(session.settings["plane_settings_2_4"]);
 
         //quit the game if any of the trial numbers are not divisible by the number of trials
         int minTarget = Convert.ToInt32(session.settings["min_target_1"]);
@@ -190,7 +194,14 @@ public class ExampleController : MonoBehaviour {
             Debug.Log("WARNING: Check your trial settings for target positions and numbers");
         }
 
-        int targetStep = Math.Abs(maxTarget - minTarget) / (numTargets - 1);
+        if (numTargets == 1)
+        {
+            targetStep = 0;
+        }
+        else
+        {
+            targetStep = Math.Abs(maxTarget - minTarget) / (numTargets - 1);
+        }
 
         for(int i = numTargets; i > 0; i--)
         {
@@ -201,6 +212,7 @@ public class ExampleController : MonoBehaviour {
             minTarget += targetStep;
         }
 
+        // do the previous steps again for second set of targets
         //quit the game if any of the trial numbers are not divisible by the number of trials
         minTarget = Convert.ToInt32(session.settings["min_target_2"]);
         maxTarget = Convert.ToInt32(session.settings["max_target_2"]);
@@ -211,7 +223,14 @@ public class ExampleController : MonoBehaviour {
             Debug.Log("WARNING: Check your trial settings for target positions and numbers");
         }
 
-        targetStep = Math.Abs(maxTarget - minTarget) / (numTargets - 1);
+        if (numTargets == 1)
+        {
+            targetStep = 0;
+        }
+        else
+        {
+            targetStep = Math.Abs(maxTarget - minTarget) / (numTargets - 1);
+        }
 
         for (int i = numTargets; i > 0; i--)
         {
@@ -277,15 +296,15 @@ public class ExampleController : MonoBehaviour {
         shuffledTargetList.RemoveAt(0);
 
         //determine Target Position (used by ColliderDetector to instantiate the target)
-        //rotate the target holder (this just needs to be done for some reason..)
-        targetHolder.transform.rotation = Quaternion.Euler(0, targetLocation - 90, 0);
-
+        //rotate the target holder (the -90 just needs to be done for some reason..)
         // here we are casting to a float (explicit conversion)
-        targetYOffset = (float)Convert.ToDouble(trial.settings["target_y_offset"]) / 100;
+        targetYOffset = (float)Convert.ToDouble(trial.settings["target_y_offset"]) * -1;
+        
         // Debug.LogFormat("targetYOffset in Controller set to {0}", targetYOffset);
 
+        targetHolder.transform.rotation = Quaternion.Euler(targetYOffset, targetLocation - 90, 0);
 
-        //check for clamped
+        //check for clamped or no cursor
         if (Convert.ToString(trial.settings["trial_type"]).Contains("clamped"))
         {
             handCursorObject.SetActive(false);
@@ -294,9 +313,18 @@ public class ExampleController : MonoBehaviour {
             //clampedHandCursorObject.GetComponent<MeshRenderer>().enabled = false;
             //print("setting clamped to active");
         }
+        else if (Convert.ToString(trial.settings["trial_type"]).Contains("no_cursor"))
+        {
+            // for no_cursor: The object has to be active (for collisions), but not visible (meshrenderer)
+            handCursorObject.SetActive(true);
+            handCursorObject.GetComponent<MeshRenderer>().enabled = false;
+            clampedHandCursorObject.SetActive(false);
+            //print("setting clamped to inactive");
+        }
         else
         {
             handCursorObject.SetActive(true);
+            handCursorObject.GetComponent<MeshRenderer>().enabled = true;
             clampedHandCursorObject.SetActive(false);
             //print("setting clamped to inactive");
         }
@@ -326,22 +354,26 @@ public class ExampleController : MonoBehaviour {
 
         //Debug.LogFormat("the cursor is {0}", trialType);
 
-        // change plane settings for this trial
-        if (Convert.ToString(trial.settings["plane_settings"]).Contains("tilt_on_x"))
+        // only tilt the plane on the first trial of block
+        if (trial.numberInBlock == 1)
         {
-            StartCoroutine(planeController.setToTiltOnX());
-        }
-        else if (Convert.ToString(trial.settings["plane_settings"]).Contains("tilt_on_z"))
-        {
-            StartCoroutine(planeController.setToTiltOnZ());
-        }
-        else if (Convert.ToString(trial.settings["plane_settings"]).Contains("flat"))
-        {
-            StartCoroutine(planeController.setToFlat());
-        }
-        else
-        {
-            planeController.setToNone();
+            // change plane settings for this trial
+            if (Convert.ToString(trial.settings["plane_settings"]).Contains("tilt_on_x"))
+            {
+                StartCoroutine(planeController.SetToTiltOnX());
+            }
+            else if (Convert.ToString(trial.settings["plane_settings"]).Contains("tilt_on_z"))
+            {
+                StartCoroutine(planeController.SetToTiltOnZ());
+            }
+            else if (Convert.ToString(trial.settings["plane_settings"]).Contains("flat"))
+            {
+                planeController.SetToFlat();
+            }
+            else
+            {
+                planeController.SetToNone();
+            }
         }
 
         //add these things to the trial_results csv (per trial)
@@ -352,6 +384,9 @@ public class ExampleController : MonoBehaviour {
 
         //Create homeposition
         homePositionObject.SetActive(true);
+
+        // turn off returnHelper
+        returnHelper.SetActive(false);
     }
 
     private void Update()

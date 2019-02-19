@@ -1,33 +1,18 @@
 timestamp,log_type,message
 0.02,Warning,"A Canvas named ""[UXF_UI]"" with a render mode of ScreenSpaceOverlay is being used while VR is also enabled. This Canvas will continue to incur a rendering cost but will not be visible while in VR. Is this intentional?"
-1.989036,Log,Loaded: D:\shanaa\repos\unity-reachTarget3D-template\UFile_reachTargetTemplate\data\testing_participant_list.csv
-4.845208,Log,Updating: D:\shanaa\repos\unity-reachTarget3D-template\UFile_reachTargetTemplate\data\testing_participant_list.csv
-5.901057,Warning,Warning: Session already exists! Continuing will overwrite
-5.901057,Log,show instruction = true  expanding
-5.901057,Log,0
-24.93106,Log,0
-28.65381,Log,show instruction = false  doing nothing
-28.65381,Log,0
-31.79792,Log,-8.33
-35.09823,Log,-16.66
-38.42006,Log,-24.99
-42.27574,Log,show instruction = false  doing nothing
-42.27574,Log,30
-45.97579,Log,30
-48.90912,Log,show instruction = false  doing nothing
-48.90912,Log,0
-52.13155,Log,0
-55.15393,Log,show instruction = true  expanding
-55.15393,Log,0
-62.87623,Log,0
-65.92057,Log,show instruction = false  doing nothing
-65.92057,Log,30
-69.12055,Log,30
-72.38708,Log,30
-75.53165,Log,30
-78.69849,Log,show instruction = false  doing nothing
-78.69849,Log,-30
-82.23179,Log,-30
-85.28741,Log,show instruction = false  doing nothing
-85.28741,Log,0
-133.588,Log,0
+2.503988,Log,Loaded: D:\shanaa\repos\unity-reachTarget3D-template\UFile_reachTargetTemplate\data\testing_participant_list.csv
+4.763307,Log,Updating: D:\shanaa\repos\unity-reachTarget3D-template\UFile_reachTargetTemplate\data\testing_participant_list.csv
+5.458457,Warning,Warning: Session already exists! Continuing will overwrite
+5.458457,Log,show instruction = true  expanding
+5.458457,Log,0
+21.395,Log,0
+23.88459,Log,show instruction = false  doing nothing
+23.88459,Log,-30
+26.45082,Log,-30
+28.75071,Log,-30
+32.32861,Log,-30
+35.1508,Log,show instruction = false  doing nothing
+35.1508,Log,30
+39.39509,Log,30
+42.32857,Log,show instruction = true  expanding
+42.32857,Log,0

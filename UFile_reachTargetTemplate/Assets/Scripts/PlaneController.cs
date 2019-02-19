@@ -4,51 +4,54 @@ using UnityEngine;
 
 public class PlaneController : MonoBehaviour {
 
-    public void setToNone()
+    float plane_rot_angle = -45f;
+
+    public void SetToNone()
     {
         GetComponent<MeshRenderer>().enabled = false;
     }
 
-    public IEnumerator setToFlat()
+    public void SetToFlat()
     {
         GetComponent<MeshRenderer>().enabled = true;
 
-        float r_x = transform.eulerAngles.x;
-        float r_z = transform.eulerAngles.z;
+        //float r_x = transform.eulerAngles.x;
+        //float r_z = transform.eulerAngles.z;
 
-        for (float r = r_x; r >= 0; r += 0.1f)
-        {
-            
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            yield return new WaitForSeconds(.02f);
-        }
+        //for (float r = r_x; r < 0; r += 0.1f)
+        //{
+
+        //    transform.rotation = Quaternion.Euler(0, 0, 0);
+        //    yield return new WaitForSeconds(.02f);
+        //}
+        transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
-    public IEnumerator setToTiltOnX()
+    public IEnumerator SetToTiltOnX()
     {
         GetComponent<MeshRenderer>().enabled = true;
 
         // get current rotation on the x
         float r_x = transform.eulerAngles.x;
+        float r_z = transform.eulerAngles.z;
 
         // every 0.1s, change the angle to be 1 closer to the desired rotation
-        for (float r = r_x; r > 30; r -= 1f)
+        for (float r = r_x; r > plane_rot_angle; r -= 2f)
         {
-
             transform.rotation = Quaternion.Euler(r, 0, 0);
             yield return new WaitForSeconds(.02f);
         }
     }
 
-    public IEnumerator setToTiltOnZ()
+    public IEnumerator SetToTiltOnZ()
     {
         GetComponent<MeshRenderer>().enabled = true;
 
         // get current rotation on the y
-        float r_y = transform.eulerAngles.y;
+        float r_z = transform.eulerAngles.z;
 
         // every 0.1s, change the angle to be 1 closer to the desired rotation
-        for (float r = r_y; r > 30; r -= 1f)
+        for (float r = r_z; r > plane_rot_angle; r -= 2f)
         {
 
             transform.rotation = Quaternion.Euler(0, 0, r);
